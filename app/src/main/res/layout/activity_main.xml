@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#3333"
+    android:padding="10dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/home_description"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/colorGrey"
+        android:layout_marginLeft="10dp"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/form_style"
+        android:padding="0dp"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="#ddd" />
+
+    <EditText
+        android:id="@+id/amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Monto solicitado"
+        android:padding="10dp"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/form_style"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/interest_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tasa de Interes"
+        android:padding="10dp"
+        android:layout_marginTop="10sp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/form_style"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btn_start_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_style_success"
+        android:paddingTop="10sp"
+        android:paddingBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#ddd"
+        android:text="Fecha de inicio" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_style_success"
+        android:paddingTop="10sp"
+        android:paddingBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="#ddd"
+        android:text="@string/btn_start_calc" />
+
+</LinearLayout>

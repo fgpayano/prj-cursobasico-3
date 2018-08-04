@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="frequencies">
+        <item>2 cuotas (QUINCENAL)</item>
+        <item>3 cuotas (QUINCENAL)</item>
+        <item>4 cuotas (QUINCENAL)</item>
+        <item>5 cuotas (QUINCENAL)</item>
+        <item>6 cuotas (QUINCENAL)</item>
+        <item>7 cuotas (QUINCENAL)</item>
+        <item>8 cuotas (QUINCENAL)</item>
+        <item>9 cuotas (QUINCENAL)</item>
+        <item>10 cuotas (QUINCENAL)</item>
+        <item>11 cuotas (QUINCENAL)</item>
+        <item>12 cuotas (QUINCENAL)</item>
+    </string-array>
+</resources>
