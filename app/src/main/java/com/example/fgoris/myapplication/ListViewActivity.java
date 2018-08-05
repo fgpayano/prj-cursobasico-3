@@ -3,6 +3,7 @@ package com.example.fgoris.myapplication;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ListView;
 import java.util.ArrayList;
 
@@ -12,11 +13,23 @@ public class ListViewActivity extends AppCompatActivity {
     private Loan loan;
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        onBackPressed();
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
 
-        list = findViewById(R.id.listViewComponent);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        list = findViewById(R.id.list_view_component);
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();

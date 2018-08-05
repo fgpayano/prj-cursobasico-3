@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -18,10 +20,10 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private Button button;
-    private Button btn_start_date;
+    private Button btnStartDate;
     private Spinner spinner;
     private Calendar calendar;
-    private DatePickerDialog start_date;
+    private DatePickerDialog startDate;
     private SimpleDateFormat dateFormat;
     private EditText amount;
     private EditText interestRate;
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             calendarMonth = month;
             calendarYear = year;
 
-            btn_start_date.setText(dateFormat.format(calendar.getTime()));
+            btnStartDate.setText(dateFormat.format(calendar.getTime()));
         }
     };
 
@@ -55,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
-        start_date = new DatePickerDialog(this, mDatePickerListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        startDate = new DatePickerDialog(this, mDatePickerListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
 
         findViews();
         setAdapters();
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void findViews() {
         button = findViewById(R.id.button);
-        btn_start_date = findViewById(R.id.btn_start_date);
+        btnStartDate = findViewById(R.id.btn_start_date);
         spinner = findViewById(R.id.spinner);
         amount = findViewById(R.id.amount);
         interestRate = findViewById(R.id.interest_rate);
@@ -77,35 +79,41 @@ public class MainActivity extends AppCompatActivity {
         frequencies.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
         spinner.setAdapter(frequencies);
-
     }
 
     public void setListeners()
     {
-        btn_start_date.setOnClickListener(view -> start_date.show());
+        btnStartDate.setOnClickListener(view -> startDate.show());
 
         button.setOnClickListener(view -> {
 
-            Intent intent = new Intent(MainActivity.this, ListViewActivity.class);
+                Intent intent = new Intent(MainActivity.this, ListViewActivity.class);
 
-            float cinterest = Float.parseFloat(interestRate.getText().toString());
-            float camount = Float.parseFloat(amount.getText().toString());
+                String sInterest = interestRate.getText().toString();
+                String sAmount = amount.getText().toString();
 
-            intent.putExtra("loan_amount", cinterest);
-            intent.putExtra("loan_interest_rate", camount);
+                if (sInterest == null || sAmount == null || sInterest.isEmpty() || sAmount.isEmpty())
+                {
+                    Toast.makeText(getApplicationContext(), "Favor de llenar los campos vacios.", Toast.LENGTH_SHORT).show();
+                } else {
+                    float cinterest = Float.parseFloat(sInterest);
+                    float camount = Float.parseFloat(sAmount);
 
-            intent.putExtra("loan_frequency", spinnerFrequency);
-            intent.putExtra("loan_date_year", calendarYear);
-            intent.putExtra("loan_date_month", calendarMonth);
-            intent.putExtra("loan_date_day", calendarDay);
+                    intent.putExtra("loan_amount", camount);
+                    intent.putExtra("loan_interest_rate", cinterest);
+                    intent.putExtra("loan_frequency", spinnerFrequency);
+                    intent.putExtra("loan_date_year", calendarYear);
+                    intent.putExtra("loan_date_month", calendarMonth);
+                    intent.putExtra("loan_date_day", calendarDay);
 
-            startActivity(intent);
+                    startActivity(intent);
+                }
         });
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                spinnerFrequency = spinner.getSelectedItemPosition() + 1;
+                spinnerFrequency = spinner.getSelectedItemPosition() + 2;
             }
 
             @Override

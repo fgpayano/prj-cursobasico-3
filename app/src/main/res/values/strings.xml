@@ -3,5 +3,6 @@
     <string name="home_description">BorrowMoney calcula montos y fechas de pagos en la palma de tu mano, prestamos simple.</string>
     <string name="btn_change_text">Change the text</string>
     <string name="btn_start_calc">CALCULAR</string>
-    <string name="hello_world_menu">HELLO WORLD MENU</string>
+    <string name="hin_amount">Monto Solicitado</string>
+    <string name="hin_rate">Tasa de Interes</string>
 </resources>
